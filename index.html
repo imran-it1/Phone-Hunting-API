@@ -39,7 +39,7 @@
     <header class="container mx-auto min-h-[10%]">
         <div class="navbar bg-sky-100 rounded-lg">
             <div class="flex-1">
-                <a class="btn btn-ghost normal-case text-2xl">Phone Hunting</a>
+                <a class="btn btn-ghost normal-case text-2xl">Phone Hunter</a>
             </div>
             <div class="flex-none gap-2">
                 <div class="form-control">
@@ -88,8 +88,33 @@
             <div id="phone-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 <!-- Dynamic Phone Card WilL Goes Here -->
             </div>
+
+            <!-- Modal -->
+            <div class="mt-5">
+                <!-- Open the modal using ID.showModal() method -->
+                <dialog id="show_details_modal" class="modal modal-bottom sm:modal-middle">
+                    <form method="dialog" class="modal-box">
+                        <h3 id="phone-name" class="font-bold text-lg">Hello!</h3>
+
+                        <div id="phone-detail-container">
+
+                        </div>
+
+
+
+                        <div class="modal-action">
+                            <!-- if there is a button in form, it will close the modal -->
+                            <button class="btn">Close</button>
+                        </div>
+                    </form>
+                </dialog>
+            </div>
+
+            <img src="" alt="">
+
+            <!-- Show All Button -->
             <div id="show-all-button" class="text-center mt-5 hidden">
-                <button class="btn tracking-wider btn-accent">Show All</button>
+                <button onclick="handleShowAll()" class="btn tracking-wider btn-accent">Show All</button>
             </div>
         </section>
     </main>
