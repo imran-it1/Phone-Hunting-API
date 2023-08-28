@@ -36,7 +36,7 @@
 </head>
 
 <body class="roboto leading-relaxed">
-    <header class="container mx-auto">
+    <header class="container mx-auto min-h-[10%]">
         <div class="navbar bg-sky-100 rounded-lg">
             <div class="flex-1">
                 <a class="btn btn-ghost normal-case text-2xl">Phone Hunting</a>
@@ -66,14 +66,34 @@
             </div>
         </div>
     </header>
-    <main class="container mx-auto">
-        <section class="py-32">
-            <div id="phone-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+    <main class="container mx-auto min-h-screen">
 
+        <section class="py-32">
+            <!-- Search Functionality -->
+            <div class="bg-sky-100 p-5 mb-10 rounded-lg space-x-2">
+                <!-- Search Field -->
+                <input id="search-field" type="text" placeholder="Search phone.."
+                    class="input input-bordered w-full max-w-xs" />
+                <!-- Search Button -->
+                <button onclick="handleSearch()" class="btn tracking-wider btn-success">Search</button>
+            </div>
+
+
+            <!-- Spinner -->
+            <div id="spinner-div" class="hidden text-center">
+                <span class="loading loading-spinner loading-lg text-primary"></span>
+            </div>
+
+            <!-- Phone Card Container -->
+            <div id="phone-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                <!-- Dynamic Phone Card WilL Goes Here -->
+            </div>
+            <div id="show-all-button" class="text-center mt-5 hidden">
+                <button class="btn tracking-wider btn-accent">Show All</button>
             </div>
         </section>
     </main>
-    <footer>
+    <footer class="">
         <footer class="footer p-10 bg-sky-100 text-base-content">
             <div>
                 <span class="footer-title">Services</span>

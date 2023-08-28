@@ -1,8 +1,8 @@
 // Data load
 
-const loadPhone = async () => {
+const loadPhone = async (searchText) => {
   const res = await fetch(
-    "https://openapi.programming-hero.com/api/phones?search=iphone"
+    `https://openapi.programming-hero.com/api/phones?search=${searchText}`
   );
   const data = await res.json();
   const phones = data.data;
@@ -13,8 +13,28 @@ const loadPhone = async () => {
 const showPhone = (phones) => {
   // 1. Find the container phone card div
   const phoneContainer = document.getElementById("phone-container");
-  const phone = phones.forEach((phone) => {
-    console.log(phone);
+  // Clear old search data of phone after click the search button
+  phoneContainer.textContent = "";
+  console.log(phones);
+
+  // Button remove korte abar lada function else dite hobe jeta jhamela besi
+  // if (phones.length > 12) {
+  //   handleShowAll();
+  // }
+  // else{
+  // }
+
+  const showAllButton = document.getElementById("show-all-button");
+  if (phones.length > 12) {
+    showAllButton.classList.remove("hidden");
+  } else {
+    showAllButton.classList.add("hidden");
+  }
+
+  // Show few phones if there is find big phone list
+  phones = phones.slice(0, 12);
+
+  phones.forEach((phone) => {
     // 2. Creta the child element
     const phoneCard = document.createElement("div");
     // Set class of child element if needed
@@ -35,7 +55,40 @@ const showPhone = (phones) => {
     `;
     // 4. append child
     phoneContainer.appendChild(phoneCard);
+    // Clear phone container if user clear the search input
   });
+  handleSpinner(false);
 };
 
-loadPhone();
+// Evabe korle button show korbe na tar jonno alada function creat kora lagbe
+
+// Handle Show all Button
+// const showAllButton = document.getElementById("show-all-button");
+// const handleShowAll = () => {
+//   showAllButton.classList.remove("hidden");
+// };
+
+// Handle Search Button
+const handleSearch = () => {
+  handleSpinner(true);
+  const searchField = document.getElementById("search-field");
+  const searchText = searchField.value;
+  // if (searchText !== "iphone") {
+  //   alert("Product not found");
+  //   searchField.value = "";
+  //   return;
+  // }
+  loadPhone(searchText);
+};
+
+// Handle Spinner
+const spinnerDiv = document.getElementById("spinner-div");
+const handleSpinner = (isSpine) => {
+  if (isSpine) {
+    spinnerDiv.classList.remove("hidden");
+  } else {
+    spinnerDiv.classList.add("hidden");
+  }
+};
+
+// loadPhone();
