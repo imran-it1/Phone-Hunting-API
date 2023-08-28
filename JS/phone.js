@@ -1,6 +1,6 @@
 // Data load
 
-const loadPhone = async (searchText = "13", isShowAll) => {
+const loadPhone = async (searchText = "Apple", isShowAll) => {
   const res = await fetch(
     `https://openapi.programming-hero.com/api/phones?search=${searchText}`
   );
@@ -131,6 +131,37 @@ const showDetails = (phone) => {
   console.log(phone);
   const phoneName = document.getElementById("phone-name");
   phoneName.innerText = phone.name;
+
+  const showDetailContainer = document.getElementById("show-detail-container");
+  showDetailContainer.innerHTML = `
+  <img class="mt-4" src="${phone.image}" alt="">
+  <p class="font-medium">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. </p>
+
+  <p class= "font-medium" ><span class="font-extrabold">Storage: </span>${
+    phone.mainFeatures?.storage
+  }</p>
+  <p class= "font-medium" ><span class="font-extrabold">Display Size: </span>${
+    phone.mainFeatures?.displaySize
+  }</p>
+  <p class= "font-medium" ><span class="font-extrabold">Chipset: </span>${
+    phone.mainFeatures?.chipSet
+  }</p>
+  <p class= "font-medium" ><span class="font-extrabold">Memory: </span>${
+    phone.mainFeatures?.memory
+  }</p>
+  <p class= "font-medium" ><span class="font-extrabold">Slug: </span>${
+    phone.slug
+  }</p>
+  <p class= "font-medium" ><span class="font-extrabold">Release Date: </span>${
+    phone.releaseDate
+  }</p>
+  <p class= "font-medium" ><span class="font-extrabold">Brand: </span>${
+    phone.brand
+  }</p>
+  <p class= "font-medium" ><span class="font-extrabold">GPS: </span>${
+    phone.others?.GPS ? phone.others?.GPS : "No GPS found in this device"
+  }</p>
+`;
   // Show Modal
   show_details_modal.showModal();
 };
