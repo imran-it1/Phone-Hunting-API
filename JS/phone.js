@@ -52,7 +52,10 @@ const showPhone = (phones, isShowAll) => {
     // 2. Creta the child element
     const phoneCard = document.createElement("div");
     // Set class of child element if needed
-    phoneCard.classList = "card bg-base-100 shadow-xl";
+    // This is worng approch to add classname
+    // phoneCard.classList = "card bg-base-100 shadow-xl";
+    // This is the correct way to add classs
+    phoneCard.classList.add("card", "bg-base-100", "shadow-xl");
     // 3.Set innerText or innerHTML
     phoneCard.innerHTML = `
     <figure class="px-10 pt-10">
